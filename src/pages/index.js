@@ -4,8 +4,8 @@
 import React, { useState } from 'react';
 import {Paper, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 import centered from './styles.css'
-import InitialForm from './components/initialForm';
-import FirstSemesterForm from './components/firstSemester';
+import InitialView from './components/initialForm';
+import FirstSemesterView from './components/firstSemester';
 
 export default function Home() {
   const [view, setView] = React.useState(0);
@@ -16,19 +16,13 @@ export default function Home() {
   } 
 
   return (
-    <div style={{ backgroundColor: 'maroon', width: '100%', height: '800px'}}>\
-      <div className="centered">
-        <Paper sx= {{ width: 500, height: 500}} elevation= {18}>
-            <div className="centered">
+    <div style={{ backgroundColor: 'maroon', width: '100%', height: '800px'}}>
             {(view == 0) ? 
-              <InitialForm handleSubmit= {handleSubmit}/> : null
+              <InitialView handleSubmit= {handleSubmit}/> : null
             }
             {(view == 1) ? 
-              <FirstSemesterForm/> : null
+              <FirstSemesterView/> : null
             }
-            </div>
-        </Paper>
-      </div>
     </div>
   )
 }
