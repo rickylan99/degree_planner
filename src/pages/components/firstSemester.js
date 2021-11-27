@@ -26,10 +26,13 @@ export default function FirstSemesterView() {
 
   const addCourse = (data) => {
     console.log('Clicked', preview)
-    const temp = preview.push(data)
+    preview.push(data)
+    const newpreview = preview.slice()
     // NEED TO FIX UPDATING THE OTHER TABLE
-    //setPreview(data)
-    //preview.push(data)
+    setPreview(newpreview)
+    // preview.push(data)
+
+    
     console.log('Clicked Here', preview)
   }
 
