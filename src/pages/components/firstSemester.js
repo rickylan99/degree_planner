@@ -25,15 +25,40 @@ export default function FirstSemesterView() {
   const [courseEntered, setCourseEntered] = React.useState('');
 
   const addCourse = (data) => {
-    console.log('Clicked', preview)
-    preview.push(data)
-    const newpreview = preview.slice()
-    // NEED TO FIX UPDATING THE OTHER TABLE
-    setPreview(newpreview)
-    // preview.push(data)
 
-    
-    console.log('Clicked Here', preview)
+    // check if class was already added
+    let alreadyAdded = false
+    for(let i = 0; i < preview.length; i++){
+      if(preview[i].classNumber == data.classNumber){
+        alreadyAdded = true
+      }
+    }
+
+    if (!alreadyAdded){
+      const previewLen = preview.length
+      data.id = previewLen
+
+      preview.push(data)
+
+      const newPreview = preview.slice()
+      setPreview(newPreview)
+
+      console.log('Finished Adding', preview)
+    }
+  }
+
+  const removeCourse = (data) => {
+
+    // removing specified row
+    preview.splice(data.id, 1)
+    const newPreview = preview.slice()
+
+    // resetting row IDs to be sequential
+    for(let i = 0; i < newPreview.length; i++){
+      newPreview[i].id = i
+    }
+
+    setPreview(newPreview)
   }
 
   const handleCourseChange = (event) => {
@@ -50,7 +75,7 @@ export default function FirstSemesterView() {
       <center>
         <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
       </center>
-      <Paper sx= {{ width: 330, height: 600, float: "left"}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 600, float: "left", overflow: 'auto'}} elevation= {18}>
         <center>
           <h3>Preview of Freshman Year First Semester: </h3>
         </center>
@@ -75,7 +100,7 @@ export default function FirstSemesterView() {
                 <TableCell>{row.className}</TableCell>
                 <TableCell>{row.classHours}</TableCell>
                 <TableCell>
-                  <Button onClick={() => {addCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="success">Add</Button>
+                  <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="success">Remove</Button>
                 </TableCell>
               </TableRow>
             )) }
@@ -83,7 +108,7 @@ export default function FirstSemesterView() {
         </Table>
       </Paper>
 
-      <Paper sx= {{ width: 330, height: 240, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 240, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300, maxHeight: 300 }}>
           <center>
             <h3 >Recommened Courses: </h3>
@@ -117,7 +142,7 @@ export default function FirstSemesterView() {
         </Table>
         </Box>
       </Paper>
-      <Paper sx= {{ width: 330, height: 240, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 240, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300 }}>
           <center>
             <h3>Electives: (Select 1)</h3>
@@ -151,7 +176,7 @@ export default function FirstSemesterView() {
         </Table>
         </Box>
       </Paper>
-      <Paper sx= {{ width: 330, height: 175, float: "right", marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 175, float: "right", marginLeft: 5, overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300 }}>
           <center>
             <h3> Add other course: </h3>
