@@ -32,7 +32,7 @@ const style = {
 
 //const electives = first_year_data.first_semester.electives;
 
-export default function FirstSemesterView() {
+export default function FirstSemesterView(props) {
   const [preview, setPreview] = React.useState([]);
   const [recommendedCourses, setRecommendedCourses] = React.useState(first_year_data.first_semester.recommendedCourses);
   const [electives, setElectives] = React.useState(first_year_data.first_semester.electives);
@@ -127,7 +127,7 @@ export default function FirstSemesterView() {
                 <TableCell>{row.className}</TableCell>
                 <TableCell>{row.classHours}</TableCell>
                 <TableCell>
-                  <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="success">Remove</Button>
+                  <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="error">Remove</Button>
                 </TableCell>
               </TableRow>
             )) }
@@ -226,13 +226,11 @@ export default function FirstSemesterView() {
         </Box>
       </Modal>
 
-      <Paper sx= {{ width: 200, height: 60, float: "left", overflow: 'auto', marginLeft: 8}}>
-        <Box sx={{ width: 200, marginTop: 1}}>
+        <Box sx={{ width: 200, marginTop: 1, float: "left", marginLeft: 8}}>
           <center> 
-            <Button  variant="contained">Next Semester</Button> 
+            <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
           </center>
         </Box>
-      </Paper>
     </div>
   );
 }

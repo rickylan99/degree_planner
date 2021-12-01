@@ -106,7 +106,7 @@ export const first_year_data = {
             {
                 id: 1,
                 classNumber: "ENGL 104",
-                className: "Elective Example",
+                className: "Composition and Rhetoric",
                 classHours: 4,
                 description: "Composition and Rhetoric. Focus on referential and persuasive researched essays through the development of analytical reading ability, critical thinking and library research skills.",
                 prerec: "Freshman or sophomore classification; also taught at Galveston and Qatar campuses."
