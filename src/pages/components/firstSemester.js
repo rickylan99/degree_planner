@@ -7,8 +7,23 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
 
 
 //const preview = [];
@@ -25,6 +40,10 @@ export default function FirstSemesterView() {
   const [courseEntered, setCourseEntered] = React.useState('');
 
   const [hours, setHours] = React.useState(0);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const addCourse = (data) => {
 
@@ -82,12 +101,12 @@ export default function FirstSemesterView() {
       <center>
         <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
       </center>
-      <Paper sx= {{ width: 350, height: 600, float: "left", overflow: 'auto'}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
           <h3>Preview of Freshman Year First Semester: </h3>
           <h4>Total Hours: {hours}</h4>
         </center>
-        <Table stickyHeader sx={{ width: 300, maxHeight: 600 }} aria-label="simple table">
+        <Table stickyHeader sx={{ width: 300, maxHeight: 550 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Class Number</TableCell>
@@ -116,7 +135,7 @@ export default function FirstSemesterView() {
         </Table>
       </Paper>
 
-      <Paper sx= {{ width: 350, height: 240, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300, maxHeight: 300 }}>
           <center>
             <h3 >Recommened Courses: </h3>
@@ -150,7 +169,7 @@ export default function FirstSemesterView() {
         </Table>
         </Box>
       </Paper>
-      <Paper sx= {{ width: 350, height: 240, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
+      <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300 }}>
           <center>
             <h3>Electives: (Select 1)</h3>
@@ -184,8 +203,18 @@ export default function FirstSemesterView() {
         </Table>
         </Box>
       </Paper>
-      <Paper sx= {{ width: 350, height: 175, float: "right", marginLeft: 5, overflow: 'auto'}} elevation= {18}>
-        <Box sx={{ width: 300 }}>
+      <Box sx= {{ width: 200, height: 100, float: "right", marginRight: 9, marginTop: 2, overflow: 'auto'}} elevation= {18}>
+        <center>
+         <Button onClick={handleOpen} variant="contained" color="success" >Add Other Course</Button>
+        </center>
+      </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
           <center>
             <h3> Add other course: </h3>
           </center>
@@ -195,7 +224,30 @@ export default function FirstSemesterView() {
             <Button onClick={handleCourseAddition} variant="contained" color="success">Add</Button> 
           </center>
         </Box>
+      </Modal>
+
+      <Paper sx= {{ width: 200, height: 60, float: "left", overflow: 'auto', marginLeft: 8}}>
+        <Box sx={{ width: 200, marginTop: 1}}>
+          <center> 
+            <Button  variant="contained">Next Semester</Button> 
+          </center>
+        </Box>
       </Paper>
     </div>
   );
 }
+
+/*
+<Paper sx= {{ width: 350, height: 175, float: "right", marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+<Box sx={{ width: 300 }}>
+  <center>
+    <h3> Add other course: </h3>
+  </center>
+  <TextField sx={{ marginLeft: 2, marginBottom: 2}} fullWidth id="outlined-basic" label="Course Number" variant="outlined" value={courseEntered} onChange={handleCourseChange}/>
+  <br/>
+  <center> 
+    <Button onClick={handleCourseAddition} variant="contained" color="success">Add</Button> 
+  </center>
+</Box>
+</Paper>
+*/
