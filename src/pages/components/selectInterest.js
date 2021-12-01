@@ -1,61 +1,76 @@
-import * as React from 'react';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+import { Button, Paper, TextField} from '@mui/material';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { TextField , Button, Paper, Checkbox} from '@mui/material';
 import { red, green, blue, orange } from '@mui/material/colors';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-export default function SelectInterest(props) {
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  formControl: {
+    margin: theme.spacing(3),
+  },
+}));
+
+export default function CheckboxesGroup(props) {
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    Software: false,
+    DataScience: false,
+    Cybersecurity: false,
+    GameDevelopment: false,
+  });
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const { Software, DataScience, Cybersecurity, GameDevelopment } = state;
+  const error = [Software, DataScience, Cybersecurity, GameDevelopment].filter((v) => v).length !== 2;
+
   return (
-    <div>
-      <Checkbox
-        {...label}
-        defaultChecked
-        sx={{
-          color: orange[800],
-          '&.Mui-checked': {
-            color: orange[600],
-          },
-          '& .MuiSvgIcon-root': { fontSize: 28 }
-        }}
-      />
-      <Checkbox
-        {...label}
-        defaultChecked
-        sx={{
-          color: green[800],
-          '&.Mui-checked': {
-            color: green[600],
-          },
-          '& .MuiSvgIcon-root': { fontSize: 28 }
-        }}
-      />
-      <Checkbox
-        {...label}
-        defaultChecked
-        sx={{
-          color: blue[800],
-          '&.Mui-checked': {
-            color: blue[600],
-          },
-          '& .MuiSvgIcon-root': { fontSize: 28 }
-        }}
-      />
-      <Checkbox
-        {...label}
-        defaultChecked
-        sx={{
-          color: red[800],
-          '&.Mui-checked': {
-            color: red[600],
-          },
-          '& .MuiSvgIcon-root': { fontSize: 28 }
-        }}
-      />
+    <div className='centered'>
+      <Paper sx= {{ width: 350, height: 280, overflow: 'auto'}} elevation= {18}>
+        <Box sx={{ width: 300 }}>
+          <FormControl required error={error} component="fieldset" className={classes.formControl}>
+            <FormLabel component="legend">Pick Two Areas of Interest</FormLabel>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox checked={Software} onChange={handleChange} name="Software" />}
+                label="Software Engineering"
+              />
+              <FormControlLabel
+                control={<Checkbox checked={DataScience} onChange={handleChange} name="DataScience" />}
+                label="Data Science"
+              />
+              <FormControlLabel
+                control={<Checkbox checked={Cybersecurity} onChange={handleChange} name="Cybersecurity" />}
+                label="Cybersecurity"
+              />
+              <FormControlLabel
+                control={<Checkbox checked={GameDevelopment} onChange={handleChange} name="GameDevelopment" />}
+                label="Game Development"
+              />
+            </FormGroup>
+            <FormHelperText>Only pick 2</FormHelperText>
+          </FormControl>
+        </Box>
+      </Paper>
+
+      <Box sx={{ width: 200, marginTop: 5, marginLeft: 5}}>
+          <center> 
+            <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
+          </center>
+        </Box>
     </div>
   );
 }
