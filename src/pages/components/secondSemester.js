@@ -121,11 +121,11 @@ export default function SecondSemesterView(props) {
   return (
     <div className="centered">
       <center>
-        <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
+        <h1> FRESHMAN YEAR - 2nd SEMESTER </h1>
       </center>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
-          <h3>Preview of Freshman Year First Semester: </h3>
+          <h3>Preview of Freshman Year Second Semester: </h3>
           <h4>Total Hours: {hours}</h4>
         </center>
         <Table stickyHeader sx={{ width: 300, maxHeight: 550 }} aria-label="simple table">
