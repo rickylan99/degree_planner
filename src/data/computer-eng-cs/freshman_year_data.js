@@ -43,7 +43,23 @@ export const first_year_data = {
         electives: [
             {
                 id: 0,
+                classNumber: "POLS 206",
+                className: "American National Government",
+                classHours: 3,
+                description: "American National Government. Survey of American national government, politics, and constitutional development; also taught at Galveston and Qatar campuses.",
+                prerec: "None"
+            },
+            {
+                id: 1,
                 classNumber: "TEST 101",
+                className: "Elective Example",
+                classHours: 4,
+                description: "test description",
+                prerec: "test prerecs"
+            },
+            {
+                id: 2,
+                classNumber: "TEST 102",
                 className: "Elective Example",
                 classHours: 4,
                 description: "test description",
@@ -80,7 +96,23 @@ export const first_year_data = {
         ], 
         electives: [
             {
+                id: 0,
+                classNumber: "POLS 207",
+                className: "State and Local Government",
+                classHours: 3,
+                description: "State and Local Government. Survey of state and local government and politics with special reference to the constitution and politics of Texas; also taught at Galveston and Qatar campuses.",
+                prerec: "None"
+            },
+            {
                 id: 1,
+                classNumber: "ENGL 104",
+                className: "Elective Example",
+                classHours: 4,
+                description: "Composition and Rhetoric. Focus on referential and persuasive researched essays through the development of analytical reading ability, critical thinking and library research skills.",
+                prerec: "Freshman or sophomore classification; also taught at Galveston and Qatar campuses."
+            },
+            {
+                id: 2,
                 classNumber: "TEST 101",
                 className: "Elective Example",
                 classHours: 4,
@@ -88,7 +120,7 @@ export const first_year_data = {
                 prerec: "test prerecs"
             },
             {
-                id: 2,
+                id: 3,
                 classNumber: "TEST 102",
                 className: "Elective Example",
                 classHours: 4,

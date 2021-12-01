@@ -31,24 +31,6 @@ export default function InitialView(props) {
             <h3>Enter your information below to get started:</h3>
             <TextField fullWidth id="outlined-basic" label="Name" variant="outlined" onChange={handleNameChange}/>
           </Box>
-          
-          <Box sx={{ width: 300, marginBottom: 5 }}>
-            <FormControl fullWidth sx={{marginBotton: 5}}>
-              <InputLabel id="demo-simple-select-label">Classification</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={classification}
-                label="Classification"
-                onChange={handleClassChange}
-              >
-                <MenuItem value={1}>Freshman</MenuItem>
-                <MenuItem value={2}>Sophmore</MenuItem>
-                <MenuItem value={3}>Junior</MenuItem>
-                <MenuItem value={4}>Senior</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
 
           <Box sx={{ width: 300, marginBottom: 5 }}>
             <FormControl fullWidth>

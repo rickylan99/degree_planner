@@ -16,7 +16,7 @@ export default function Home() {
   } 
 
   return (
-    <div style={{ backgroundColor: 'maroon', width: '100%', height: '800px'}}>
+    <div style={{ backgroundColor: 'maroon', width: '100%', height: '900px'}}>
             {(view == 0) ? 
               <InitialView handleSubmit= {handleSubmit}/> : null
             }
