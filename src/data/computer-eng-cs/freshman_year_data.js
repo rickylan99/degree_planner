@@ -106,7 +106,7 @@ export const first_year_data = {
             {
                 id: 1,
                 classNumber: "COMM 203",
-                className: "Public Speakingc",
+                className: "Public Speaking",
                 classHours: 4,
                 description: "Public Speaking. Training in speeches of social and technical interest designed to teach students to develop and illustrate ideas and information and to inform, stimulate, and persuade their audiences; also taught at Galveston campus.",
                 prerec: "Prerequisites: None"
