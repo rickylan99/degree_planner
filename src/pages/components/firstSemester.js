@@ -24,6 +24,8 @@ export default function FirstSemesterView() {
 
   const [courseEntered, setCourseEntered] = React.useState('');
 
+  const [hours, setHours] = React.useState(0);
+
   const addCourse = (data) => {
 
     // check if class was already added
@@ -45,6 +47,10 @@ export default function FirstSemesterView() {
 
       console.log('Finished Adding', preview)
     }
+
+    // const temp_hours = hours + data.classHours
+    setHours(hours + data.classHours)
+
   }
 
   const removeCourse = (data) => {
@@ -59,6 +65,7 @@ export default function FirstSemesterView() {
     }
 
     setPreview(newPreview)
+    setHours(hours - data.classHours)
   }
 
   const handleCourseChange = (event) => {
@@ -78,6 +85,7 @@ export default function FirstSemesterView() {
       <Paper sx= {{ width: 350, height: 600, float: "left", overflow: 'auto'}} elevation= {18}>
         <center>
           <h3>Preview of Freshman Year First Semester: </h3>
+          <h4>Total Hours: {hours}</h4>
         </center>
         <Table stickyHeader sx={{ width: 300, maxHeight: 600 }} aria-label="simple table">
           <TableHead>
@@ -188,7 +196,6 @@ export default function FirstSemesterView() {
           </center>
         </Box>
       </Paper>
-
     </div>
   );
 }
