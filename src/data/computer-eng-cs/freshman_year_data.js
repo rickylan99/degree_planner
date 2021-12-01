@@ -19,25 +19,25 @@ export const first_year_data = {
             },
             {
                 id: 2,
-                classNumber: "ENGL 103",
+                classNumber: "ENGL 104",
                 className: "Introduction to Rhetoric and Composition",
                 classHours: 3,
                 description: "Intensive study of and practice in writing processes, from invention and researching to drafting, revising and editing, both individually and corroboratively; emphasis on effective rhetorical choices including audience, purpose, arrangement and style; focus on writing the academic essay as a vehicle for learning, communicating and critical analysis.",
-                prerec: "None"
+                prerec: "Prerequisites: None"
             },{
                 id: 3,
                 classNumber: "ENGR 102",
                 className: "Engineering Lab I - Computation",
                 classHours: 2,
                 description: "Introduction to the design and development of computer applications for engineers; computation to enhance problem solving abilities; basic concepts of software design through the implementation and debugging of student-written programs; introduction to engineering majors, career exploration, engineering practice within realistic constraints, e.g. economic, environmental, ethical, health and safety, and sustainability; pathways to success in engineering.",
-                prerec: "Grade of C or better in MATH 151 or MATH 150, or concurrent enrollment; admission to the college of engineering."
+                prerec: "Prerequisites: Grade of C or better in MATH 151 or MATH 150, or concurrent enrollment; admission to the college of engineering."
             },{
                 id: 4,
                 classNumber: "MATH 151",
                 className: "Engineering Mathematics I",
                 classHours: 4,
                 description: "Engineering Mathematics I. Rectangular coordinates, vectors, analytic geometry, functions, limits, derivatives of functions, applications, integration, computer algebra. MATH 171 designed to be a more demanding version of this course. Only one of the following will satisfy the requirements for a degree: MATH 131, MATH 142, MATH 147, MATH 151 or MATH 171.",
-                prerec: "Grade of C or better in MATH 150 or equivalent or acceptable score on TAMU Math Placement Exam; also taught at Galveston and Qatar campuses."
+                prerec: "Prerequisites: Grade of C or better in MATH 150 or equivalent or acceptable score on TAMU Math Placement Exam; also taught at Galveston and Qatar campuses."
             }
         ], 
         electives: [
@@ -47,7 +47,7 @@ export const first_year_data = {
                 className: "American National Government",
                 classHours: 3,
                 description: "American National Government. Survey of American national government, politics, and constitutional development; also taught at Galveston and Qatar campuses.",
-                prerec: "None"
+                prerec: "Prerequisites: None"
             },
             {
                 id: 1,
@@ -55,7 +55,7 @@ export const first_year_data = {
                 className: "Elective Example",
                 classHours: 4,
                 description: "test description",
-                prerec: "test prerecs"
+                prerec: "Prerequisites: test prerecs"
             },
             {
                 id: 2,
@@ -63,7 +63,7 @@ export const first_year_data = {
                 className: "Elective Example",
                 classHours: 4,
                 description: "test description",
-                prerec: "test prerecs"
+                prerec: "Prerequisites: test prerecs"
             }
         ]
     },
@@ -91,7 +91,7 @@ export const first_year_data = {
                 className: "Introduction to Rhetoric and Composition",
                 classHours: 3,
                 description: "Intensive study of and practice in writing processes, from invention and researching to drafting, revising and editing, both individually and corroboratively; emphasis on effective rhetorical choices including audience, purpose, arrangement and style; focus on writing the academic essay as a vehicle for learning, communicating and critical analysis.",
-                prerec: "None"
+                prerec: "Prerequisites: None"
             }
         ], 
         electives: [
@@ -101,15 +101,15 @@ export const first_year_data = {
                 className: "State and Local Government",
                 classHours: 3,
                 description: "State and Local Government. Survey of state and local government and politics with special reference to the constitution and politics of Texas; also taught at Galveston and Qatar campuses.",
-                prerec: "None"
+                prerec: "Prerequisites: None"
             },
             {
                 id: 1,
-                classNumber: "ENGL 104",
-                className: "Composition and Rhetoric",
+                classNumber: "COMM 203",
+                className: "Public Speaking",
                 classHours: 4,
-                description: "Composition and Rhetoric. Focus on referential and persuasive researched essays through the development of analytical reading ability, critical thinking and library research skills.",
-                prerec: "Freshman or sophomore classification; also taught at Galveston and Qatar campuses."
+                description: "Public Speaking. Training in speeches of social and technical interest designed to teach students to develop and illustrate ideas and information and to inform, stimulate, and persuade their audiences; also taught at Galveston campus.",
+                prerec: "Prerequisites: None"
             },
             {
                 id: 2,
@@ -117,7 +117,7 @@ export const first_year_data = {
                 className: "Elective Example",
                 classHours: 4,
                 description: "test description",
-                prerec: "test prerecs"
+                prerec: "Prerequisites: test prerecs"
             },
             {
                 id: 3,
@@ -125,7 +125,7 @@ export const first_year_data = {
                 className: "Elective Example",
                 classHours: 4,
                 description: "test description",
-                prerec: "test prerecs"
+                prerec: "Prerequisites: test prerecs"
             }
         ]
     }

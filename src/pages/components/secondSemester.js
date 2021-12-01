@@ -9,6 +9,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
 
@@ -25,6 +30,13 @@ const style = {
 };
 
 
+
+//const preview = [];
+
+//const recommendedCourses = first_year_data.first_semester.recommendedCourses;
+
+//const electives = first_year_data.first_semester.electives;
+
 export default function SecondSemesterView(props) {
   const [preview, setPreview] = React.useState([]);
   const [recommendedCourses, setRecommendedCourses] = React.useState(first_year_data.second_semester.recommendedCourses);
@@ -34,9 +46,26 @@ export default function SecondSemesterView(props) {
 
   const [hours, setHours] = React.useState(0);
 
+  const [openAddCourse, setOpenAddCourse] = React.useState(false);
+  const handleOpenAddCourse = () => setOpenAddCourse(true);
+  const handleCloseAddCourse = () => setOpenAddCourse(false);
+
+
+  const [description, setDescription] = React.useState('')
+  const [prerec, setPrerec] = React.useState('')
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const handleClickOpen = (data) => {
+    setDescription(data.description)
+    setPrerec(data.prerec)
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setDescription('')
+    setPrerec('')
+    setOpen(false);
+  };
 
   const addCourse = (data) => {
 
@@ -92,7 +121,7 @@ export default function SecondSemesterView(props) {
   return (
     <div className="centered">
       <center>
-        <h1> FRESHMAN YEAR - 2nd SEMESTER </h1>
+        <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
       </center>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
@@ -117,7 +146,7 @@ export default function SecondSemesterView(props) {
                 <TableCell component="th" scope="row">
                   {row.classNumber}
                 </TableCell>
-                <TableCell>{row.className}</TableCell>
+                <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
                 <TableCell>{row.classHours}</TableCell>
                 <TableCell>
                   <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="error">Remove</Button>
@@ -151,7 +180,7 @@ export default function SecondSemesterView(props) {
                 <TableCell component="th" scope="row">
                   {row.classNumber}
                 </TableCell>
-                <TableCell>{row.className}</TableCell>
+                <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
                 <TableCell>{row.classHours}</TableCell>
                 <TableCell align="left">
                   <Button onClick={() => {addCourse(row)}} sx={{ width: 1.5 }} variant="contained" color="success">Add</Button>
@@ -185,7 +214,7 @@ export default function SecondSemesterView(props) {
                 <TableCell component="th" scope="row">
                   {row.classNumber}
                 </TableCell>
-                <TableCell>{row.className}</TableCell>
+                <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
                 <TableCell>{row.classHours}</TableCell>
                 <TableCell align="left">
                   <Button onClick={() => {addCourse(row)}} sx={{ width: 1.5 }} variant="contained" color="success">Add</Button>
@@ -198,12 +227,12 @@ export default function SecondSemesterView(props) {
       </Paper>
       <Box sx= {{ width: 200, height: 100, float: "right", marginRight: 9, marginTop: 2, overflow: 'auto'}} elevation= {18}>
         <center>
-         <Button onClick={handleOpen} variant="contained" color="success" >Add Other Course</Button>
+         <Button onClick={handleOpenAddCourse} variant="contained" color="success" >Add Other Course</Button>
         </center>
       </Box>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openAddCourse}
+        onClose={handleCloseAddCourse}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -219,11 +248,35 @@ export default function SecondSemesterView(props) {
         </Box>
       </Modal>
 
-        <Box sx={{ width: 200, marginTop: 1, float: "left", marginLeft: 8}}>
-          <center> 
-            <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
-          </center>
-        </Box>
+      <Box sx={{ width: 200, marginTop: 1, float: "left", marginLeft: 8}}>
+        <center> 
+          <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
+        </center>
+      </Box>
+
+
+      <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Course Description"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {description}
+          </DialogContentText>
+          <br/>
+          <DialogContentText id="alert-dialog-description">
+            {prerec}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
