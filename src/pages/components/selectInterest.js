@@ -8,20 +8,79 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Button, Paper, TextField} from '@mui/material';
 import Box from '@mui/material/Box';
-import { red, green, blue, orange } from '@mui/material/colors';
 
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  formControl: {
-    margin: theme.spacing(3),
-  },
-}));
+export default function SelectInterestView(props) {
+  const [state, setState] = React.useState({
+    Software: false,
+    DataScience: false,
+    Cybersecurity: false,
+    GameDevelopment: false,
+  });
 
-export default function CheckboxesGroup(props) {
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const { Software, DataScience, Cybersecurity, GameDevelopment } = state;
+  const error = [Software, DataScience, Cybersecurity, GameDevelopment].filter((v) => v).length !== 2;
+
+  return (
+    <div className='centered'>
+      <center>
+        <h3>Pick Two Areas of Interest</h3>
+      </center>
+      <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: "left", marginRight: 5}} elevation= {18}>
+        <Box sx={{ width: 200 }}>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={Software} onChange={handleChange} name="Software" />}
+              label="Software Engineering"
+            />
+          </FormGroup>
+        </Box>
+      </Paper>
+      <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: "right", marginLeft: 5}} elevation= {18}>
+        <Box sx={{ width: 200 }}>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={DataScience} onChange={handleChange} name="DataScience" />}
+              label="Data Science"
+            />
+          </FormGroup>
+        </Box>
+      </Paper>
+      <br/>
+      <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: 'left', marginRight: 10, marginTop: 5}} elevation= {18}>
+        <Box sx={{ width: 200 }}>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={Cybersecurity} onChange={handleChange} name="Cybersecurity" />}
+              label="Cybersecurity"
+            />
+          </FormGroup>
+        </Box>
+      </Paper>
+      <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: 'right', marginLeft: 10, marginTop: 5}} elevation= {18}>
+        <Box sx={{ width: 200 }}>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={GameDevelopment} onChange={handleChange} name="GameDevelopment" />}
+              label="Game Development"
+            />
+          </FormGroup>
+        </Box>
+      </Paper>
+      <br/>
+      <br/>
+    </div>
+  );
+}
+
+
+/*
+export default function SelectInterestView(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     Software: false,
@@ -74,3 +133,4 @@ export default function CheckboxesGroup(props) {
     </div>
   );
 }
+*/

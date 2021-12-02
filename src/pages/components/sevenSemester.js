@@ -15,7 +15,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
+import {senior_year_data} from './../../data/computer-eng-cs/senior_year_data';
 
 const style = {
   position: 'absolute',
@@ -29,18 +29,10 @@ const style = {
   p: 4,
 };
 
-
-
-//const preview = [];
-
-//const recommendedCourses = first_year_data.first_semester.recommendedCourses;
-
-//const electives = first_year_data.first_semester.electives;
-
-export default function FinalPreviewView(props) {
+export default function SevenSemesterView(props) {
   const [preview, setPreview] = React.useState([]);
-  const [recommendedCourses, setRecommendedCourses] = React.useState(first_year_data.first_semester.recommendedCourses);
-  const [electives, setElectives] = React.useState(first_year_data.first_semester.electives);
+  const [recommendedCourses, setRecommendedCourses] = React.useState(senior_year_data.first_semester.softwareCourses);
+  const [electives, setElectives] = React.useState(senior_year_data.first_semester.dataCourses);
 
   const [courseEntered, setCourseEntered] = React.useState('');
 
@@ -121,11 +113,11 @@ export default function FinalPreviewView(props) {
   return (
     <div className="centered">
       <center>
-        <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
+        <h1> SENIOR YEAR - 7th SEMESTER </h1>
       </center>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
-          <h3>Preview of Freshman Year First Semester: </h3>
+          <h3>Preview of Senior Year First Semester: </h3>
           <h4>Total Hours: {hours}</h4>
         </center>
         <Table stickyHeader sx={{ width: 300, maxHeight: 550 }} aria-label="simple table">
@@ -160,7 +152,7 @@ export default function FinalPreviewView(props) {
       <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300, maxHeight: 300 }}>
           <center>
-            <h3 >Recommened Courses: </h3>
+            <h3 >Software Engineering Courses: </h3>
           </center>
           <Table sx={{ width: 300, maxHeight: 300}} aria-label="sticky table">
           <TableHead>
@@ -194,7 +186,7 @@ export default function FinalPreviewView(props) {
       <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300 }}>
           <center>
-            <h3>Electives: (Select 1)</h3>
+            <h3>Data Science Courses</h3>
           </center>
           <Table sx={{ width: 300 , maxHeight: 300 }} aria-label="sticky table">
           <TableHead>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { Button, Paper, TextField} from '@mui/material';
 import Table from '@mui/material/Table';
@@ -15,7 +15,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
+import {senior_year_data} from './../../data/computer-eng-cs/senior_year_data';
 
 const style = {
   position: 'absolute',
@@ -29,22 +29,14 @@ const style = {
   p: 4,
 };
 
-
-
-//const preview = [];
-
-//const recommendedCourses = first_year_data.first_semester.recommendedCourses;
-
-//const electives = first_year_data.first_semester.electives;
-
-export default function FinalPreviewView(props) {
-  const [preview, setPreview] = React.useState([]);
-  const [recommendedCourses, setRecommendedCourses] = React.useState(first_year_data.first_semester.recommendedCourses);
-  const [electives, setElectives] = React.useState(first_year_data.first_semester.electives);
+export default function EightSemesterView(props) {
+  const [preview, setPreview] = React.useState([senior_year_data.second_semester.requiredCourse[0]])
+  const [recommendedCourses, setRecommendedCourses] = React.useState(senior_year_data.second_semester.softwareCourses);
+  const [electives, setElectives] = React.useState(senior_year_data.second_semester.dataCourses);
 
   const [courseEntered, setCourseEntered] = React.useState('');
 
-  const [hours, setHours] = React.useState(0);
+  const [hours, setHours] = React.useState(3);
 
   const [openAddCourse, setOpenAddCourse] = React.useState(false);
   const handleOpenAddCourse = () => setOpenAddCourse(true);
@@ -117,15 +109,16 @@ export default function FinalPreviewView(props) {
     console.log("Add course", courseEntered)
     setCourseEntered('')
   }
+  
 
   return (
     <div className="centered">
       <center>
-        <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
+        <h1> SENIOR YEAR - 8th SEMESTER </h1>
       </center>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
-          <h3>Preview of Freshman Year First Semester: </h3>
+          <h3>Preview of Senior Year Second Semester: </h3>
           <h4>Total Hours: {hours}</h4>
         </center>
         <Table stickyHeader sx={{ width: 300, maxHeight: 550 }} aria-label="simple table">
