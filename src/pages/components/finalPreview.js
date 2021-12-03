@@ -14,8 +14,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { withStyles } from "@material-ui/core/styles";
 
-import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
+import {preview_data} from './../../data/computer-eng-cs/preview_data';
 
 const style = {
   position: 'absolute',
@@ -29,7 +30,11 @@ const style = {
   p: 4,
 };
 
-
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF"
+  }
+})(Typography);
 
 //const preview = [];
 
@@ -38,9 +43,17 @@ const style = {
 //const electives = first_year_data.first_semester.electives;
 
 export default function FinalPreviewView(props) {
-  const [preview, setPreview] = React.useState([]);
-  const [recommendedCourses, setRecommendedCourses] = React.useState(first_year_data.first_semester.recommendedCourses);
-  const [electives, setElectives] = React.useState(first_year_data.first_semester.electives);
+  const [freshman1, setFreshman1] = React.useState(preview_data.freshmanYear.firstSemester);
+  const [freshman2, setFreshman2] = React.useState(preview_data.freshmanYear.secondSemester);
+
+  const [sophomore1, setSophomore1] = React.useState(preview_data.sophomoreYear.firstSemester);
+  const [sophomore2, setSophmore2] = React.useState(preview_data.sophomoreYear.secondSemester);
+
+  const [junior1, setJunior1] = React.useState(preview_data.juniorYear.firstSemester);
+  const [junior2, setJunior2] = React.useState(preview_data.juniorYear.secondSemester);
+
+  const [senior1, setSenior1] = React.useState(preview_data.seniorYear.firstSemester);
+  const [senior2, setSenior2] = React.useState(preview_data.seniorYear.secondSemester);
 
   const [courseEntered, setCourseEntered] = React.useState('');
 
@@ -67,192 +80,280 @@ export default function FinalPreviewView(props) {
     setOpen(false);
   };
 
-  const addCourse = (data) => {
-
-    // check if class was already added
-    let alreadyAdded = false
-    for(let i = 0; i < preview.length; i++){
-      if(preview[i].classNumber == data.classNumber){
-        alreadyAdded = true
-      }
-    }
-
-    if (!alreadyAdded){
-      const previewLen = preview.length
-      data.id = previewLen
-
-      preview.push(data)
-
-      const newPreview = preview.slice()
-      setPreview(newPreview)
-
-      console.log('Finished Adding', preview)
-    }
-
-    // const temp_hours = hours + data.classHours
-    setHours(hours + data.classHours)
-
-  }
-
-  const removeCourse = (data) => {
-
-    // removing specified row
-    preview.splice(data.id, 1)
-    const newPreview = preview.slice()
-
-    // resetting row IDs to be sequential
-    for(let i = 0; i < newPreview.length; i++){
-      newPreview[i].id = i
-    }
-
-    setPreview(newPreview)
-    setHours(hours - data.classHours)
-  }
-
-  const handleCourseChange = (event) => {
-    setCourseEntered(event.target.value)
-  }
-
-  const handleCourseAddition = (event) => {
-    console.log("Add course", courseEntered)
-    setCourseEntered('')
-  }
+  
 
   return (
-    <div className="centered">
+    <div>
+      <br/>
+      <br/>
       <center>
-        <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
+        <WhiteTextTypography variant="h4">
+          PREVIEW DEGREE PLAN
+        </WhiteTextTypography>
       </center>
-      <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
-        <center>
-          <h3>Preview of Freshman Year First Semester: </h3>
-          <h4>Total Hours: {hours}</h4>
-        </center>
-        <Table stickyHeader sx={{ width: 300, maxHeight: 550 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Class Number</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Hours</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            { preview.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.classNumber}
-                </TableCell>
-                <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
-                <TableCell>{row.classHours}</TableCell>
-                <TableCell>
-                  <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="error">Remove</Button>
-                </TableCell>
+      <br/>
+      <center>
+        <Box sx= {{ width: 300, height: 50, float: "left", marginBottom: 2, marginLeft: 15}}>
+          <WhiteTextTypography variant="h5">
+            FRESHMAN YEAR
+          </WhiteTextTypography>
+        </Box>
+        <Box sx= {{ width: 300, height: 50, float: "left", marginBottom: 2, marginLeft: 5}}>
+          <WhiteTextTypography variant="h5">
+            SOPHOMORE YEAR
+          </WhiteTextTypography>
+        </Box>
+        <Box sx= {{ width: 300, height: 50, float: "left", marginBottom: 2, marginLeft: 5}}>
+          <WhiteTextTypography variant="h5">
+            JUNIOR YEAR
+          </WhiteTextTypography>
+        </Box>
+        <Box sx= {{ width: 300, height: 50, float: "left", marginBottom: 2, marginLeft: 5}}>
+          <WhiteTextTypography variant="h5">
+            SENIOR YEAR
+          </WhiteTextTypography>
+        </Box>
+        <br/>
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 15, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
               </TableRow>
-            )) }
-          </TableBody>
-        </Table>
-      </Paper>
+            </TableHead>
+            <TableBody>
+              { freshman1.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
 
-      <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
-        <Box sx={{ width: 300, maxHeight: 300 }}>
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
-            <h3 >Recommened Courses: </h3>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
           </center>
-          <Table sx={{ width: 300, maxHeight: 300}} aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Class Number</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Hours</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {recommendedCourses.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.classNumber}
-                </TableCell>
-                <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
-                <TableCell>{row.classHours}</TableCell>
-                <TableCell align="left">
-                  <Button onClick={() => {addCourse(row)}} sx={{ width: 1.5 }} variant="contained" color="success">Add</Button>
-                </TableCell>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        </Box>
-      </Paper>
-      <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
-        <Box sx={{ width: 300 }}>
-          <center>
-            <h3>Electives: (Select 1)</h3>
-          </center>
-          <Table sx={{ width: 300 , maxHeight: 300 }} aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Class Number</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Hours</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {electives.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.classNumber}
-                </TableCell>
-                <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
-                <TableCell>{row.classHours}</TableCell>
-                <TableCell align="left">
-                  <Button onClick={() => {addCourse(row)}} sx={{ width: 1.5 }} variant="contained" color="success">Add</Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        </Box>
-      </Paper>
-      <Box sx= {{ width: 200, height: 100, float: "right", marginRight: 9, marginTop: 2, overflow: 'auto'}} elevation= {18}>
-        <center>
-         <Button onClick={handleOpenAddCourse} variant="contained" color="success" >Add Other Course</Button>
-        </center>
-      </Box>
-      <Modal
-        open={openAddCourse}
-        onClose={handleCloseAddCourse}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <center>
-            <h3> Add other course: </h3>
-          </center>
-          <TextField sx={{ marginLeft: 2, marginBottom: 2}} fullWidth id="outlined-basic" label="Course Number" variant="outlined" value={courseEntered} onChange={handleCourseChange}/>
-          <br/>
-          <center> 
-            <Button onClick={handleCourseAddition} variant="contained" color="success">Add</Button> 
-          </center>
-        </Box>
-      </Modal>
+            </TableHead>
+            <TableBody>
+              { sophomore1.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
 
-      <Box sx={{ width: 200, marginTop: 1, float: "left", marginLeft: 8}}>
-        <center> 
-          <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
-        </center>
-      </Box>
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              { junior1.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
+
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              { senior1.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
+        <br/>
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 15, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              { freshman2.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
+
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              { sophomore2.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
+
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              { junior2.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
+
+        <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
+          <center>
+            <h3>First Semester:</h3>
+            <h4>Total Hours: {hours}</h4>
+          </center>
+          <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Number</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Hours</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              { senior2.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.classNumber}
+                  </TableCell>
+                  <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
+                  <TableCell>{row.classHours}</TableCell>
+                </TableRow>
+              )) }
+            </TableBody>
+          </Table>
+        </Paper>
+      </center>
 
 
       <Dialog

@@ -14,6 +14,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { withStyles } from "@material-ui/core/styles";
 
 import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
 
@@ -29,7 +30,11 @@ const style = {
   p: 4,
 };
 
-
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF"
+  }
+})(Typography);
 
 //const preview = [];
 
@@ -121,8 +126,11 @@ export default function SecondSemesterView(props) {
   return (
     <div className="centered">
       <center>
-        <h1> FRESHMAN YEAR - 2nd SEMESTER </h1>
+        <WhiteTextTypography variant="h4">
+          FRESHMAN YEAR - 2nd SEMESTER
+        </WhiteTextTypography>
       </center>
+      <br/>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
           <h3>Preview of Freshman Year Second Semester: </h3>
@@ -194,7 +202,7 @@ export default function SecondSemesterView(props) {
       <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300 }}>
           <center>
-            <h3>Electives: (Select 1)</h3>
+            <h3>Electives: (Select 2)</h3>
           </center>
           <Table sx={{ width: 300 , maxHeight: 300 }} aria-label="sticky table">
           <TableHead>

@@ -8,7 +8,14 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Button, Paper, TextField} from '@mui/material';
 import Box from '@mui/material/Box';
+import { withStyles } from "@material-ui/core/styles";
+import Typography from '@mui/material/Typography';
 
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF"
+  }
+})(Typography);
 
 export default function SelectInterestView(props) {
   const [state, setState] = React.useState({
@@ -33,8 +40,11 @@ export default function SelectInterestView(props) {
   return (
     <div className='centered'>
       <center>
-        <h1>Pick Two Areas of Interest</h1>
+        <WhiteTextTypography variant="h4">
+          SELECT TWO TRACKS
+        </WhiteTextTypography>
       </center>
+      <br/>
       <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: "left", marginRight: 5}} elevation= {18}>
         <Box sx={{ width: 200, paddingLeft: 2, paddingTop: 3}}>
           <FormGroup>

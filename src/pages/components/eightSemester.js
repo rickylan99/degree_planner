@@ -14,8 +14,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { withStyles } from "@material-ui/core/styles";
 
 import {senior_year_data} from './../../data/computer-eng-cs/senior_year_data';
+
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF"
+  }
+})(Typography);
 
 const style = {
   position: 'absolute',
@@ -114,8 +121,11 @@ export default function EightSemesterView(props) {
   return (
     <div className="centered">
       <center>
-        <h1> SENIOR YEAR - 8th SEMESTER </h1>
+        <WhiteTextTypography variant="h4">
+          SENIOR YEAR - 8th SEMESTER
+        </WhiteTextTypography>
       </center>
+      <br/>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
           <h3>Preview of Senior Year Second Semester: </h3>

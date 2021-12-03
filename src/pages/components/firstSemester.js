@@ -14,6 +14,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import {white} from '@mui/material/colors'
+import { withStyles } from "@material-ui/core/styles";
 
 import {first_year_data} from './../../data/computer-eng-cs/freshman_year_data';
 
@@ -29,7 +31,11 @@ const style = {
   p: 4,
 };
 
-
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF"
+  }
+})(Typography);
 
 //const preview = [];
 
@@ -121,8 +127,11 @@ export default function FirstSemesterView(props) {
   return (
     <div className="centered">
       <center>
-        <h1> FRESHMAN YEAR - 1st SEMESTER </h1>
+        <WhiteTextTypography variant="h4">
+          FRESHMAN YEAR - 1st SEMESTER
+        </WhiteTextTypography>
       </center>
+      <br/>
       <Paper sx= {{ width: 350, height: 600, float: "left", marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <center>
           <h3>Preview of Freshman Year First Semester: </h3>

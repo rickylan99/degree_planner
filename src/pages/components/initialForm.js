@@ -51,7 +51,7 @@ export default function InitialView(props) {
 
           <Box sx={{ width: 300, marginBottom: 5 }}>
             <center> 
-              <Button onClick={props.handleSubmit} variant="outlined">Submit</Button> 
+              <Button onClick={props.handleSubmit} variant="contained">Submit</Button> 
             </center>
           </Box>
         </div>
