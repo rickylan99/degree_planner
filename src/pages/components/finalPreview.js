@@ -117,7 +117,7 @@ export default function FinalPreviewView(props) {
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 15, overflow: 'auto'}} elevation= {18}>
           <center>
             <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h4>Total Hours: 18</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -147,7 +147,7 @@ export default function FinalPreviewView(props) {
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
             <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h4>Total Hours: 16</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -177,7 +177,7 @@ export default function FinalPreviewView(props) {
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
             <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h4>Total Hours: 13</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -207,7 +207,7 @@ export default function FinalPreviewView(props) {
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
             <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h4>Total Hours: 15</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -236,8 +236,8 @@ export default function FinalPreviewView(props) {
         <br/>
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 15, overflow: 'auto'}} elevation= {18}>
           <center>
-            <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h3>Second Semester:</h3>
+            <h4>Total Hours: 12</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -266,8 +266,8 @@ export default function FinalPreviewView(props) {
 
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
-            <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h3>Second Semester:</h3>
+            <h4>Total Hours: 15</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -296,8 +296,8 @@ export default function FinalPreviewView(props) {
 
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
-            <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h3>Second Semester:</h3>
+            <h4>Total Hours: 13</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
@@ -326,8 +326,8 @@ export default function FinalPreviewView(props) {
 
         <Paper sx= {{ width: 300, height: 300, float: "left", marginBottom: 2, marginLeft: 5, overflow: 'auto'}} elevation= {18}>
           <center>
-            <h3>First Semester:</h3>
-            <h4>Total Hours: {hours}</h4>
+            <h3>Second Semester:</h3>
+            <h4>Total Hours: 12</h4>
           </center>
           <Table stickyHeader sx={{ width: 300, maxHeight: 300 }} aria-label="simple table">
             <TableHead>
