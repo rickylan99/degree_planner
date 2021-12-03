@@ -142,7 +142,9 @@ export default function EightSemesterView(props) {
                 <TableCell onClick={() => {handleClickOpen(row)}}>{row.className}</TableCell>
                 <TableCell>{row.classHours}</TableCell>
                 <TableCell>
-                  <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="error">Remove</Button>
+                  { row.id != 0 ?
+                    <Button onClick={() => {removeCourse(row)}} sx={{ width: 2.5 }} variant="contained" color="error">Remove</Button> : null
+                  }
                 </TableCell>
               </TableRow>
             )) }
@@ -153,7 +155,7 @@ export default function EightSemesterView(props) {
       <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2, overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300, maxHeight: 300 }}>
           <center>
-            <h3 >Recommened Courses: </h3>
+            <h3 >Software Engineering Courses: </h3>
           </center>
           <Table sx={{ width: 300, maxHeight: 300}} aria-label="sticky table">
           <TableHead>
@@ -187,7 +189,7 @@ export default function EightSemesterView(props) {
       <Paper sx= {{ width: 350, height: 280, float: "right", marginLeft: 5, marginBottom: 2,  overflow: 'auto'}} elevation= {18}>
         <Box sx={{ width: 300 }}>
           <center>
-            <h3>Electives: (Select 1)</h3>
+            <h3>Data Science Courses</h3>
           </center>
           <Table sx={{ width: 300 , maxHeight: 300 }} aria-label="sticky table">
           <TableHead>
@@ -243,7 +245,7 @@ export default function EightSemesterView(props) {
 
       <Box sx={{ width: 200, marginTop: 1, float: "left", marginLeft: 8}}>
         <center> 
-          <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
+          <Button onClick={props.handleSubmit} variant="contained">CONTINUE</Button> 
         </center>
       </Box>
 

@@ -32,11 +32,7 @@ export default function Home() {
               <SecondSemesterView handleSubmit={handleSubmit}/> : null
             }
             {(view == 3) ?
-              <div>
-                <SelectInterestView/>
-                <br/>
-                <Button onClick={handleSubmit} variant="contained">Next Semester</Button> 
-              </div> : null
+              <SelectInterestView handleSubmit={handleSubmit}/> : null
             }
             {(view == 4) ?
               <SevenSemesterView handleSubmit={handleSubmit}/> : null

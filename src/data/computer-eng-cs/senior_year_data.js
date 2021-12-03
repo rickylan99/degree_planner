@@ -86,7 +86,7 @@ export const senior_year_data = {
         {
             id: 1,
             classNumber: "CSCE 421",
-            className: "Principles of Data Science",
+            className: "Machine Learning",
             classHours: 3,
             description: "Theoretical foundations of machine learning, pattern recognition and generating predictive models and classifiers from data; includes methods for supervised and unsupervised learning (decision trees, linear discriminants, neural networks, Gaussian models, non-parametric models, clustering, dimensionality reduction, deep learning), optimization procedures and statistical inference.",
             prerec: "Prerequisites: Grade of C or better in MATH 304, MATH 311, or MATH 323; grade of C or better in STAT 211; grade of C or better in CSCE 221 or STAT 404."

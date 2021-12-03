@@ -242,7 +242,7 @@ export default function SevenSemesterView(props) {
 
       <Box sx={{ width: 200, marginTop: 1, float: "left", marginLeft: 8}}>
         <center> 
-          <Button onClick={props.handleSubmit} variant="contained">Next Semester</Button> 
+          <Button onClick={props.handleSubmit} variant="contained">CONTINUE</Button> 
         </center>
       </Box>
 

@@ -10,7 +10,6 @@ import { Button, Paper, TextField} from '@mui/material';
 import Box from '@mui/material/Box';
 
 
-
 export default function SelectInterestView(props) {
   const [state, setState] = React.useState({
     Software: false,
@@ -24,15 +23,20 @@ export default function SelectInterestView(props) {
   };
 
   const { Software, DataScience, Cybersecurity, GameDevelopment } = state;
-  const error = [Software, DataScience, Cybersecurity, GameDevelopment].filter((v) => v).length !== 2;
+
+  React.useEffect(() => {
+    if ([Software, DataScience, Cybersecurity, GameDevelopment].filter((v) => v).length > 1){
+      props.handleSubmit()
+    } 
+  });
 
   return (
     <div className='centered'>
       <center>
-        <h3>Pick Two Areas of Interest</h3>
+        <h1>Pick Two Areas of Interest</h1>
       </center>
       <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: "left", marginRight: 5}} elevation= {18}>
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: 200, paddingLeft: 2, paddingTop: 3}}>
           <FormGroup>
             <FormControlLabel
               control={<Checkbox checked={Software} onChange={handleChange} name="Software" />}
@@ -42,7 +46,7 @@ export default function SelectInterestView(props) {
         </Box>
       </Paper>
       <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: "right", marginLeft: 5}} elevation= {18}>
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: 200, paddingLeft: 2, paddingTop: 3}}>
           <FormGroup>
             <FormControlLabel
               control={<Checkbox checked={DataScience} onChange={handleChange} name="DataScience" />}
@@ -53,7 +57,7 @@ export default function SelectInterestView(props) {
       </Paper>
       <br/>
       <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: 'left', marginRight: 10, marginTop: 5}} elevation= {18}>
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: 200, paddingLeft: 2, paddingTop: 3}}>
           <FormGroup>
             <FormControlLabel
               control={<Checkbox checked={Cybersecurity} onChange={handleChange} name="Cybersecurity" />}
@@ -63,7 +67,7 @@ export default function SelectInterestView(props) {
         </Box>
       </Paper>
       <Paper sx= {{ width: 200, height: 100, overflow: 'auto', float: 'right', marginLeft: 10, marginTop: 5}} elevation= {18}>
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: 200, paddingLeft: 2, paddingTop: 3 }}>
           <FormGroup>
             <FormControlLabel
               control={<Checkbox checked={GameDevelopment} onChange={handleChange} name="GameDevelopment" />}
@@ -72,8 +76,6 @@ export default function SelectInterestView(props) {
           </FormGroup>
         </Box>
       </Paper>
-      <br/>
-      <br/>
     </div>
   );
 }
